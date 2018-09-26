@@ -19,7 +19,6 @@ def rmBrackets(string):
         return string
 
 # Scrape ML Glossary if not already saved
-
 try:
     with open('ml.pkl', 'rb') as input:
         first_texts = pickle.load(input)
