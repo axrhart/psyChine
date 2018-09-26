@@ -45,11 +45,11 @@ for x in range(0,len(first_texts)-1):
     file.write("## " + first_texts[x] +"\n")
     file.write("| One | Two | Three |\n")
     file.write("| --- | --- | ----- |\n")
-    for text in second_texts:
-        file.write("| " + first_texts[x] + " " + text + " ")    
-        if x % 3 == 0:
+    for y in range(0,len(second_texts)-1):
+        file.write("| " + first_texts[x] + " " + second_texts[y] + " ")
+        if y % 3 == 0:
             file.write("|\n")
-
+    
     file.write("\n")    
-
+    
 file.close
