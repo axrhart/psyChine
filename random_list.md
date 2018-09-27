@@ -108,3 +108,45 @@
 9. inter-rater agreement Pupil
 10. true positive rate Dark adaptation
 
+# List of generated pairs
+## 2018-09-27 08:26:36.023000
+
+1. batch size Confirmation bias
+2. NLU Range
+3. embedding space Optic nerve
+4. Tensor shape Acronym
+5. metric Dependent variable
+6. k-means Mental set
+7. negative class Passionate love
+8. semi-supervised learning Conservation
+9. graph Prejudice
+10. test set Sympathetic nervous system
+
+# List of generated pairs
+## 2018-09-27 08:28:54.261000
+
+1. clipping Subject bias
+2. Metrics API Implicit attitudes
+3. target Stressors
+4. rank Fee for service
+5. numpy Mental age
+6. test set Chromosomes
+7. minority class Ground
+8. recall Attachment styles
+9. re-ranking Defense mechanisms
+10. linear regression Assimilation
+
+# List of generated pairs
+## 2018-09-27 08:29:46.226000
+
+1. generalization hindbrain
+2. parameter update schema
+3. training set thalamus
+4. input layer feigned scarcity
+5. nlu free association
+6. group attribution bias stimulants
+7. test set displacement
+8. tensor shape monoamine oxidase inhibitors
+9. pipeline reuptake
+10. true positive rate monogenic traits
+

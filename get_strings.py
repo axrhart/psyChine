@@ -2,12 +2,16 @@ import urllib2
 import datetime
 import random
 import sys
+import os
 import cPickle as pickle
 from bs4 import BeautifulSoup
 
 # Init variables
 size = 10
 append = True
+parse_anew = False
+random_file_name = "new_random_list.md"
+fixed_file_name = "full_list.md"
 
 # Useful functions
 
@@ -20,6 +24,9 @@ def rmBrackets(string):
 
 # Scrape ML Glossary if not already saved
 try:
+    if parse_anew:
+        raise IOError
+
     with open('ml.pkl', 'rb') as input:
         first_texts = pickle.load(input)
 except IOError:
@@ -38,6 +45,9 @@ except IOError:
 
 # Scrapy Psych Glossary if not already saved
 try:
+    if parse_anew:
+        raise IOError
+
     with open('psy.pkl', 'rb') as input:
         second_texts = pickle.load(input)
 except IOError:        
@@ -57,19 +67,19 @@ except IOError:
 
 # Generate output of all matches, if file doesn't exist already
 try:
-    open("full_list.md")
+    open(fixed_file_name)
 except IOError:    
-    file = open("full_list.md","w")
+    file = open(fixed_file_name,"w")
     file.write("# List of generated pairs\n\n")
     file.close
 
-    file = open("full_list.md", "a")
+    file = open(fixed_file_name, "a")
     for x in range(0,len(first_texts)-1):
         file.write("## " + first_texts[x] +"\n")
         file.write("| One | Two | Three |\n")
         file.write("| --- | --- | ----- |\n")
         for y in range(0,len(second_texts)-1):
-            file.write("| " + first_texts[x] + " " + second_texts[y] + " ")
+            file.write("| " + first_texts[x].lower() + " " + second_texts[y].lower() + " ")
             if y % 3 == 0:
                 file.write("|\n")
         
@@ -78,19 +88,25 @@ except IOError:
 
 # Generate random output
 if append:
-    file = open("random_list.md","a")
+    file = open(random_file_name,"a+")
 else:
-    file = open("random_list.md","w")
+    file = open(random_file_name,"w+")
 
-file.write("# List of generated pairs\n## " + str(datetime.datetime.now()) + "\n\n")   
-file.close
+first_char = file.read(1)
+if not first_char:
+    file.write("# List of generated pairs\n")
+else:
+    file.write('\n')    
 
-file = open("random_list.md","a")
+file.close    
+
+file = open(random_file_name,"a")
+file.write("## " + str(datetime.datetime.now()) + "\n\n")  
 for x in range(1,11):
     a = random.randint(0,len(first_texts)-1)
     b = random.randint(0,len(second_texts)-1)
 
-    file.write(str(x) + ". " + first_texts[a] + " " + second_texts[b] + "\n")
+    file.write(str(x) + ". " + first_texts[a].lower() + " " + second_texts[b].lower() + "\n")
 
 file.write("\n")
 file.close    
